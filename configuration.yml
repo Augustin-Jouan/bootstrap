@@ -11,20 +11,4 @@ jenkins:
           password: "jigglypuff"
 
 jobs:
-  - script: >
-      freeStyleJob('Disk Space Check') {
-        steps {
-          shell('df -h')
-        }
-      }
-  - script: >
-      freeStyleJob('Daily Dose of Satisfaction') {
-        parameters {
-          stringParam('NAME', 'user', 'Your name')
-        }
-        steps {
-          shell('echo "Hello dear ^${NAME}!"')
-          shell('date')
-          shell('echo "This is your DDoS number ^${BUILD_NUMBER}."')
-        }
-      }
+  - file: /var/jenkins_home/casc_configs/job_dsl.groovy

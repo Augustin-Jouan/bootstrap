@@ -12,6 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
       - ./configuration.yml:/var/jenkins_home/casc_configs/configuration.yml
+      - ./job_dsl.groovy:/var/jenkins_home/casc_configs/job_dsl.groovy
     restart: unless-stopped
 
 volumes:
