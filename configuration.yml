@@ -1,0 +1,33 @@
+jenkins:
+
+  systemMessage: "Hello! Welcome to my Jenkins instance :)"
+  
+  securityRealm:
+    local:
+      # enlever l'inscript° (sécurité)
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "d7ca8583d81d46b1b26a68e5b5e721a0"
+        
+        - id: "jigglypuff"
+          password: "jigglypuff"
+
+jobs:
+  - script: >
+      freeStyleJob('Disk Space Check') {
+        steps {
+          shell('df')
+        }
+      }
+  - script: >
+      freeStyleJob('Daily Dose of Satisfaction') {
+        parameters {
+          stringParam('NAME', 'user', 'Your name')
+        }
+        steps {
+          shell('echo "Hello dear ${NAME}!"')
+          shell('date')
+          shell('echo "This is your DDoS number ${BUILD_NUMBER}."')
+        }
+      }
